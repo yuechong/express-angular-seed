@@ -1,0 +1,59 @@
+.container{
+    width: 90%;
+    padding: 10px 0px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+.center{
+
+    padding: 10px;
+}
+.example-card{
+    width:9%;
+    min-width: 120px;
+    display: inline-block;
+    margin: 4px;
+}
+.mt10{
+    margin-top: 10px;
+    
+}
+ul, li, p, dl, dt, dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.in_05 ul {
+    border-bottom: 1px dashed #a8cee1;
+    line-height: 20px;
+    height: 23px;
+    padding: 4px 0 0 3px;
+}
+
+.in_05 ul li {
+    float: left;
+    height: 20px;
+    overflow: hidden;
+    margin: 0 5px;
+    padding: 1px 3px;
+}
+
+
+
+
+.in_05 ul li a {
+    padding: 0 2px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    color: #07519a;
+}
+.in_05 ul li.on {
+    background-color: red;
+    border-radius: 4px; 
+  
+}
+.in_05 ul li.on a{
+    color:white;
+}

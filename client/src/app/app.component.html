@@ -1,0 +1,90 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+    <mat-toolbar>
+        <h1>日本漫画</h1>
+
+
+        <!-- search -->
+        <div style="float:right;margin-left:20px;">
+            <mat-form-field>
+                <input matInput type="text" placeholder="search" [(ngModel)]="name" />
+                <button mat-button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="submit()">submit</button>
+        </div>
+        <div style="clear:both;"></div>
+    </mat-toolbar>
+
+    <mat-card>
+        <mat-card-content class="in_05">
+            <ul>
+                <li>
+                    <strong>完结状态</strong>：
+                </li>
+                <li *ngFor="let item of finishs;" [ngClass]="{'on':classActive.isFinish === item.value}">
+                    <a href="javascript:;" (click)="search('isFinish',item.value)">{{item.text}}</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <strong>漫画分类</strong>：
+                </li>
+
+                <li *ngFor="let item of types;" [ngClass]="{'on':classActive.type === item.value}">
+                    <a href="javascript:;" (click)="search('type',item.value)">{{item.text}}</a>
+                </li>
+
+            </ul>
+            <ul>
+                <li>
+                    <strong>字母分类</strong>：
+                </li>
+
+                <li *ngFor="let char of charets;" [ngClass]="{'on':classActive.char == char}">
+                    <a href="javascript:;" (click)="search('char',char)">{{char||'全部'}}</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <strong>热门程度</strong>：</li>
+                <li class="on">
+                    <a>全部</a>
+                </li>
+                <li>
+                    <a href=""></a>
+                </li>
+            </ul>
+        </mat-card-content>
+    </mat-card>
+    <div class="center">
+        <mat-card class="example-card" *ngFor="let item of list | paginate: { itemsPerPage: param.size, currentPage: param.curPage,id: 'foo',totalItems:page.totalCount };let $index = index;">
+
+            <a [href]="item.href" target="_blank" [title]="item.title">
+                <img mat-card-image [src]="item.img" [alt]="item.title">
+            </a>
+            <mat-card-content>
+                <p style="text-align:center;white-space:nowrap;overflow:hidden;text-overflow: ellipsis;">
+                    <a [href]="item.href" target="_blank" [title]="item.title">{{item.title}}</a>
+                </p>
+
+                <p style="text-align:center;">
+
+                    <a [href]="item.news_href" target="_blank" [title]="item.news">{{item.news}}
+                        <span *ngIf="item.isFinish">[完]</span>
+                    </a>
+                </p>
+                <p style="text-align:center;white-space:nowrap;overflow:hidden;text-overflow: ellipsis;">
+                    <a [href]="item.auth_href" target="_blank" [title]="item.auth">{{item.auth}}</a>
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div style="clear:both;"></div>
+    <!-- page -->
+    <div fxLayout="row" fxLayoutGap="10px" class="mt10" fxLayoutAlign="center center">
+        <pagination-controls id="foo" maxSize="9" directionLinks="true" (pageChange)="pageChange($event)"></pagination-controls>
+    </div>
+</div>
